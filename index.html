@@ -527,6 +527,13 @@ body {
     }
 }
 
+#vision-text {
+    color: black;
+    font-size: 18px; /* Imposta la dimensione del testo */
+    font-family: Arial, sans-serif; /* Impostazione del font */
+    visibility: visible; /* Assicura che il testo sia visibile */
+    transition: opacity 0.5s ease-in-out; /* Aggiungi una transizione per un effetto più fluido */
+}
 
 
     </style>
@@ -586,20 +593,24 @@ body {
         </div>
     </div>
 <div class="container">
-        <h1 style="color: black;">PROJECT VISION</h1>
-        <div class="expandable-box">
-        </div>
-        <div class="text-box">
-            <p>I specialize in developing meme landing pages and graphics for X, offering competitive and affordable prices, even for low-budget projects. I am here to support the community, so feel free to reach out for a free quote.  
-My goal is to promote the REPLY GUY movement on X and create an active community of individuals grinding daily on the platform. I aim to help people meet the minimum requirements for payouts on X and teach them how to monetize on the platform.</p>
-        </div>
+    <h1 style="color: black;">PROJECT VISION</h1>
+    <div class="expandable-box">
+        <!-- Qui viene aggiornato il testo -->
+        <p id="vision-text" style="color: black;">
+            I specialize in developing meme landing pages and graphics for X, offering competitive and affordable prices, even for low-budget projects. I am here to support the community, so feel free to reach out for a free quote.  
+            My goal is to promote the REPLY GUY movement on X and create an active community of individuals grinding daily on the platform. I aim to help people meet the minimum requirements for payouts on X and teach them how to monetize on the platform.
+        </p>
     </div>
+</div>
+
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 webG.site | All rights reserved</p>
     </footer>
 
     <script>
+
         window.onload = () => {
             document.body.classList.add('loaded');
             document.querySelector('.container').classList.add('loaded');
@@ -717,6 +728,41 @@ document.addEventListener("click", function (event) {
     }
 });
 
+// Array dei testi da alternare nella sezione Project Vision
+const visionTexts = [
+
+"I specialize in developing landing pages and graphics for low-budget projects. Whether you're starting small or aiming big, I provide affordable solutions that deliver high-quality results. Let's create together!",
+    "I help people grow their followers and monetize on X. Whether you're a content creator or a business, I offer strategies and tools to help you increase your reach and start earning on the platform.",
+    "My mission is to promote the REPLY GUY movement on X and build an active community of people grinding daily. I'm here to help you grow, connect, and thrive on the platform!"
+];
+
+// Funzione per cambiare il testo ogni 5 secondi
+let visionIndex = 0;
+
+function changeVisionText() {
+    const visionTextElement = document.getElementById("vision-text");
+
+    // Controlla se l'elemento esiste prima di cambiarlo
+    if (visionTextElement) {
+        visionTextElement.style.opacity = 0; // Fai svanire il testo prima di cambiarlo
+
+        setTimeout(() => {
+            visionTextElement.textContent = visionTexts[visionIndex]; // Cambia il testo
+            visionTextElement.style.opacity = 1; // Fai riapparire il nuovo testo
+        }, 500); // Tempo di attesa per la transizione di dissolvenza
+
+        // Aumenta l'indice e ritorna a 0 se raggiunge la fine dell'array
+        visionIndex = (visionIndex + 1) % visionTexts.length;
+    } else {
+        console.error("Element with id 'vision-text' not found.");
+    }
+}
+
+// Cambia subito il primo testo appena la pagina è pronta
+document.addEventListener("DOMContentLoaded", function() {
+    changeVisionText(); // Cambia subito il primo testo
+    setInterval(changeVisionText, 6000); // Cambia il testo ogni 5 secondi
+});
 
 </script>
 </body>
