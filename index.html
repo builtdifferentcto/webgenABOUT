@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webG Official</title>
+    <meta name="description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work on Solana, Ethereum, AVAX, Sui, TON, and more blockchains!">
+    <meta name="keywords" content="meme, memecoin, Solana, Ethereum, AVAX, Sui, TON, blockchain, crypto, Web3, developer, landing page, website, X, HTML, CSS, JavaScript, responsive">
+    <meta name="author" content="webGen">
+    
+    <!-- Open Graph (for social media) -->
+    <meta property="og:title" content="Web3 Dev | Meme, Crypto & Landing Pages">
+    <meta property="og:description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work on blockchains!">
+    <meta property="og:image" content="http://imageshack.com/f/pmseD5BRp">
+    <meta property="og:url" content="https://webg.site">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card (for X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web3 Dev | Meme, Crypto & Landing Pages">
+    <meta name="twitter:description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work!">
+    <meta name="twitter:image" content="http://imageshack.com/f/pmseD5BRp">
+    <meta name="twitter:site" content="@webgen_graphics">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="http://imageshack.com/f/pmpsT9jrp">
+    <style>
+        /* Importazione font */
+        /* Importazione font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', sans-serif;
+    background: url('') no-repeat center center fixed;
+    background-size: 50%;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+
+ .container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .expandable-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+        }
+        .text-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            color: white;
+margin-bottom: 100px;
+        }
+/* Box elegante */
+.background-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) skewY(-2deg);
+    width: 60vw;
+    height: 60vh;
+    background-size: contain;
+    border-radius: 15px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+background-attachment: fixed; /* Rende l'immagine fissa mentre si scorre */
+}
+
+/* Sezioni */
+.sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out 3s;
+}
+
+.sections.loaded {
+    opacity: 1;
+}
+
+.section {
+    display: none;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 70px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    width: 500px;
+    height: auto;
+    transition: all 0.5s ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+    letter-spacing: 1px;
+    
+}
+p {
+    word-spacing: 8px; /* Aumenta la distanza tra le parole */
+}
+
+.section.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #00bcd4;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Effetto bounce */
+@keyframes bounce {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.section.show {
+    animation: bounce 1s ease-out forwards;
+}
+
+/* Bottoni */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    bottom: 180px;
+    left: 185px;
+    opacity: 0;
+    transition: opacity 2s ease-in-out 2s;
+}
+
+.buttons.loaded {
+    opacity: 1;
+}
+
+.btn {
+    margin: 10px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.5s ease-in-out;
+    opacity: 1;
+    display: block;
+    width: 60px;
+    height: 60px;
+background-image: url('https://imagizer.imageshack.com/img924/9084/wylADc.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    position: relative;
+}
+
+ .btn:nth-child(1) {
+            background-image: url('https://imagizer.imageshack.com/img924/2840/Q5cxRb.png');
+        }
+
+        .btn:nth-child(2) {
+            background-image: url('https://imagizer.imageshack.com/img922/728/ub8mcK.png');
+        }
+
+        .btn:nth-child(3) {
+            background-image: url('https://imagizer.imageshack.com/img922/834/8mtlN5.png');
+        }
+
+        .btn:nth-child(4) {
+            background-image: url('https://imagizer.imageshack.com/img922/5057/44ukM5.png');
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+.btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 12px;
+    color: black;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 188, 212, 0.7);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo img {
+    height: 70px;
+}
+
+/* Sezione del menu */
+.menu-section {
+    position: relative;
+    padding-top: 20px; /* Spazio per il banner */
+}
+
+/* Bottone segnalibro a filo margine destro */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    width: 50px;
+    height: 200px;
+    background-color: #ffaad4;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Quando si passa sopra il bottone del menu */
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Scritta Menu verticale */
+.menu-text {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d94;
+}
+
+/* Box del menu elegante che scorre */
+.menu-box {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Posizione iniziale fuori dalla vista */
+    width: 300px;
+    height: 100%;
+    background: #ffdef2;
+    padding: 20px;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999;
+    transition: right 0.5s ease-in-out; /* Transizione scorrevole da destra verso sinistra */
+}
+
+/* Menu visibile */
+.menu-box.show {
+    display: block;
+    right: 0; /* Quando il menu è visibile, si sposta a sinistra */
+}
+
+.menu-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-box li {
+    padding: 15px;
+    text-align: center;
+}
+
+.menu-box li a {
+    text-decoration: none;
+    color: #ff4d94;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.menu-box li a:hover {
+    opacity: 0.6;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    position: relative;
+    margin-top: 50px; /* Spazio per evitare sovrapposizione con il menu */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 600px) {
+    .menu-toggle {
+        width: 40px;
+        height: 150px;
+    }
+
+    .menu-box {
+        width: 250px;
+    }
+
+    .menu-text {
+        font-size: 16px;
+    }
+}
+
+/* 🔹 RESPONSIVE DESIGN 🔹 */
+@media (max-width: 768px) {
+body {
+        overflow: hidden; /* Disabilita lo scroll su mobile */
+    }
+    .background-box {
+        width: 80vw;
+        height: 40vh; /* Ridotta di 5vh */
+    }
+
+    .buttons {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        bottom: 50px; /* Posizionati sopra il footer */
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 15px;
+    }
+
+    .btn {
+        width: 35px;
+        height: 35px;
+        margin: 5px;
+    }
+
+    .section {
+        width: 90%;
+        padding: 25px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+body {
+        overflow: hidden; /* Disabilita lo scroll su mobile */
+    }
+    .background-box {
+        width: 80vw;
+        height: 35vh; /* Ridotta di 10vh */
+        margin-top: 20px;
+    }
+
+    .buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        position: absolute;
+        bottom: 50px; /* Sempre sopra il footer */
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+    }
+
+    .section {
+        width: 90%;
+        padding: 15px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+
+
+}
+/* Sfondo semi-trasparente */
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Sfondo semi-trasparente */
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background: url('https://imagizer.imageshack.com/img924/5778/jpmw9t.png') no-repeat center center;
+    background-size: 60%;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+    color: white; /* Testo bianco per visibilità */
+}
+/* Logo X sopra la scritta */
+.x-logo {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    right: 80px;
+}
+
+/* Testo */
+.popup-content p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+/* Bottone Follow */
+.twitter-follow-button {
+    background: #1DA1F2;
+    color: white;
+    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.twitter-follow-button:hover {
+    background: #0d8bcb;
+}
+
+/* Animazione di fade-in */
+@keyframes fadeIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+<!-- Sezione del menu -->
+<section class="menu-section">
+    <!-- Bottone del menu a filo margine destro, scritto in verticale -->
+    <div class="menu-toggle" id="menuToggle">
+        <span class="menu-text">Menu</span>
+    </div>
+
+    <!-- Box del menu elegante che scorre -->
+    <div class="menu-box" id="menuBox">
+        <ul>
+            <li><a href="https://x.com/weBgen_graphics">Follow</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+        </ul>
+    </div>
+</section>
+
+<div id="twitter-popup" class="popup">
+    <div class="popup-content">
+                <p>Get in touch!</p>
+        <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
+    </div>
+</div>
+
+<div class="background-box"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="buttons">
+            <button class="btn" onclick="toggleSection('section1')"></button>
+            <button class="btn" onclick="toggleSection('section2')"></button>
+            <button class="btn" onclick="toggleSection('section3')"></button>
+            <button class="btn" onclick="toggleSection('section4')"></button> <!-- Aggiunto quarto pallino -->
+        </div>
+        <div class="sections">
+            <div class="section" id="section1">
+                <div class="section-title">WELCOME  MFREN</div>
+                <p>Keep clicking</p>
+            </div>
+            <div class="section" id="section2">
+                <div class="section-title">MFREN MEME</div>
+                <p>Need a landing page for your meme? Hit my dm on X</p>
+            </div>
+            <div class="section" id="section3">
+                <div class="section-title">LANGUAGE USED</div>
+                <p>HTML,CSS,JAVASCRIPT</p>
+            </div>
+            <div class="section" id="section4">
+                <div class="section-title">MFREN OPTIMIZED</div>
+                <p>SEO & metadatas optimiziation for search engines.</p>
+            </div>
+        </div>
+    </div>
+<div class="container">
+        <h1 style="color: black;">PROJECT VISION</h1>
+        <div class="expandable-box">
+        </div>
+        <div class="text-box">
+            <p>I specialize in developing meme landing pages and graphics for X, offering competitive and affordable prices, even for low-budget projects. I am here to support the community, so feel free to reach out for a free quote.  
+My goal is to promote the REPLY GUY movement on X and create an active community of individuals grinding daily on the platform. I aim to help people meet the minimum requirements for payouts on X and teach them how to monetize on the platform.</p>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 webG.site | All rights reserved</p>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+            document.querySelector('.container').classList.add('loaded');
+            document.querySelector('.buttons').classList.add('loaded');
+            document.querySelector('.sections').classList.add('loaded');
+            document.querySelector('.logo').style.opacity = '1'; /* Aggiunto per mostrare il logo */
+        };
+
+        // Toggle sections visibility with transition
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            const currentSection = document.getElementById(sectionId);
+            
+            // Chiude il box già aperto
+            sections.forEach(section => {
+                if (section !== currentSection) {
+                    section.classList.remove('show');
+                    section.style.display = 'none';
+                }
+            });
+
+            // Alterna l'apertura e la chiusura del box
+            if (currentSection.style.display === 'block') {
+                currentSection.classList.remove('show');
+                currentSection.style.display = 'none';
+            } else {
+                currentSection.classList.add('show');
+                currentSection.style.display = 'block';
+            }
+        }
+
+        // Close sections when clicking outside
+        document.addEventListener('click', function(event) {
+            const sections = document.querySelectorAll('.section');
+            const buttons = document.querySelectorAll('.btn');
+
+            // Check if click is outside of any button or section
+            if (!event.target.closest('.btn') && !event.target.closest('.section')) {
+                sections.forEach(section => {
+                    section.classList.remove('show');
+                    section.style.display = 'none';
+                });
+            }
+        });
+// Aggiungi un effetto ripple quando si clicca in qualsiasi punto della pagina
+document.body.addEventListener('click', function (event) {
+    const ripple = document.createElement('span');
+    const rect = document.body.getBoundingClientRect();
+    const size = 20; // Ridotto per avere un effetto più piccolo
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+
+    ripple.style.width = ripple.style.height = `${size}px`; // Mantenuto piccolo
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    ripple.classList.add('ripple');
+
+    document.body.appendChild(ripple);
+
+    // Rimuove l'elemento ripple dopo che l'animazione è finita
+    setTimeout(() => {
+        ripple.remove();
+    }, 400); // 400ms corrisponde alla durata dell'animazione
+});
+function hidePreloader() {
+            document.getElementById("preloader").classList.add("hidden");
+            setTimeout(() => {
+                document.getElementById("preloader").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }, 1000); // Attendi il fade-out prima di mostrare il contenuto
+        }
+ document.addEventListener("DOMContentLoaded", function () {
+        if (!localStorage.getItem("followed")) {
+            document.getElementById("twitter-popup").style.display = "flex";
+        }
+
+        document.getElementById("follow-btn").addEventListener("click", function () {
+            localStorage.setItem("followed", "true");
+            document.getElementById("twitter-popup").style.display = "none";
+        });
+    });    
+document.getElementById("follow-btn").addEventListener("click", function() {
+    localStorage.setItem("followedOnTwitter", "true"); // Salva lo stato di follow
+    document.getElementById("twitter-popup").style.display = "none"; // Chiude il popup
+});
+
+// Controlla se l'utente ha già seguito su Twitter
+window.addEventListener("load", function() {
+    if (localStorage.getItem("followedOnTwitter") === "true") {
+        document.getElementById("twitter-popup").style.display = "none";
+    }
+});
+// Toggle il menu elegante con effetto scorrevole
+document.getElementById("menuToggle").addEventListener("click", function () {
+    const menuBox = document.getElementById("menuBox");
+    const isVisible = menuBox.classList.contains("show");
+
+    // Aggiungi o rimuovi la classe 'show' per mostrare o nascondere il menu
+    if (isVisible) {
+        menuBox.classList.remove("show");
+    } else {
+        menuBox.classList.add("show");
+    }
+});
+
+// Chiudi il menu se si clicca fuori dal box
+document.addEventListener("click", function (event) {
+    const menuBox = document.getElementById("menuBox");
+    const menuToggle = document.getElementById("menuToggle");
+
+    // Se si clicca fuori dal menu e dal bottone, nascondi il menu
+    if (!menuBox.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuBox.classList.remove("show");
+    }
+});
+
+
+</script>
+</body>
+</html>
